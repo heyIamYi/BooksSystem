@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Models\Item;
+use App\Models\Item;
 
 /**
  * @property integer $id
@@ -25,6 +25,6 @@ class Image extends Model
 
     public function item()
     {
-        $this->belongsTo(Item::class, 'item_id', 'id');
+        return $this->belongsTo(Item::class, 'item_id', 'id');
     }
 }

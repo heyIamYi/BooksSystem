@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Models\Image;
-use App\Http\Models\User;
+use App\Models\Image;
+use App\Models\User;
 
 /**
  * @property integer $id
@@ -30,11 +30,11 @@ class Item extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function images()
     {
-       $this->hasMany(Image::class, 'item_id', 'id');
+        return $this->hasMany(Image::class, 'item_id', 'id');
     }
 }
