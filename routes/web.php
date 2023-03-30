@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,10 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
+// Postman測試時使用獲取csrf_token
+Route::get('/csrf', [Controller::class, 'csrf']);
+
+
 require __DIR__.'/auth.php';
+
+

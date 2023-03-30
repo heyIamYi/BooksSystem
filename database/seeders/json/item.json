@@ -1,0 +1,38 @@
+[
+    {
+        "name": "第一本書",
+        "image": "/storage/item/v0Vl3XDnXcvS62dOKayKc2WIRsSXT5Oyt7RH5tsx.jpg",
+        "description": "這本書內容寫著關於第一本書的東西",
+        "introduction": "無數人總是喜歡看書",
+        "quantity": 50,
+        "price": 350,
+        "user_id": 1
+    },
+    {
+        "name": "第二本書",
+        "image": "/storage/item/v0Vl3XDnXcvS62dOKayKc2WIRsSXT5Oyt7RH5tsx.jpg",
+        "description": "這本書內容寫著關於第一本書的東西",
+        "introduction": "無數人總是喜歡看書",
+        "quantity": 50,
+        "price": 330,
+        "user_id": 2
+    },
+    {
+        "name": "第三本書",
+        "image": "/storage/item/v0Vl3XDnXcvS62dOKayKc2WIRsSXT5Oyt7RH5tsx.jpg",
+        "description": "這本書內容寫著關於第一本書的東西",
+        "introduction": "無數人總是喜歡看書",
+        "quantity": 50,
+        "price": 2550,
+        "user_id": 3
+    },
+    {
+        "name": "第四本書",
+        "image": "/storage/item/v0Vl3XDnXcvS62dOKayKc2WIRsSXT5Oyt7RH5tsx.jpg",
+        "description": "這本書內容寫著關於第一本書的東西",
+        "introduction": "無數人總是喜歡看書",
+        "quantity": 50,
+        "price": 190,
+        "user_id": 2
+    }
+]

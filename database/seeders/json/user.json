@@ -1,0 +1,20 @@
+[
+    {
+        "name": "best",
+        "email": "test@fackmail.com",
+        "password": "123456",
+        "group_id": 1
+    },
+    {
+        "name": "測試二號",
+        "email": "test002@fackmail.com",
+        "password": "123456",
+        "group_id": 2
+    },
+    {
+        "name": "測試三號",
+        "email": "test003@fackmail.com",
+        "password": "123456",
+        "group_id": 1
+    }
+]

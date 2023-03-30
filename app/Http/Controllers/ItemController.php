@@ -5,86 +5,60 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Services\ItemService;
+use App\Http\Resources\ItemResource;
+use App\Http\Resources\ItemCollection;
+use Illuminate\Support\Facades\Http;
 
 class ItemController extends Controller
 {
+
+    protected $itemService;
+
+    public function __construct(ItemService $itemService)
+    {
+
+        $this->itemService = $itemService;
+    }
 
     public function index()
     {
         $item = Item::get();
 
-        return response(['item' => $item], Response::HTTP_OK);
-    }
-
-    public function create()
-    {
-        //
+        return response(ItemCollection::make($item), Response::HTTP_OK);
     }
 
     public function store(Request $request)
     {
 
-        // // 圖片處理
-        // $path = Storage::disk('local')->put(
-        //     'public/item',
-        //     $request->image
-        // );
+        $items = Item::where('user_id', $request->user()->id)->get();
 
-        // $path = str_replace('public', 'storage', $path);
+        return response()->json($items);
 
-        // dd($request);
-        $item = Item::create([
-            'name' => $request->name,
-            // 'image' => '/' . $path,
-            'image' => '/',
-            'description' => $request->description,
-            'introduction' => $request->introduction,
-            'quantity' => $request->quantity,
-            'price' => $request->price,
-            'user_id' => $request->user_id,
-        ]);
-
-        return response($item, Response::HTTP_CREATED);
+       
+        $this->itemService->store($request);
+        return response($this->itemService->status, Response::HTTP_CREATED);
     }
 
     public function show(Item $item)
     {
-        //
-    }
-
-    public function edit(Item $item)
-    {
-        //
+        return response(ItemResource::make($item), Response::HTTP_OK);
     }
 
     public function update(Request $request, $id)
     {
-        $item = Item::find($id);
-
-        if ($request->hasfile('image')) {
-            $path = '/';
-            $item->image = $path;
-        }
-
-       $item->name = $request->name;
-       $item->description = $request->description;
-       $item->introduction = $request->introduction;
-       $item->quantity = $request->quantity;
-       $item->price = $request->price;
-       $item->user_id = $request->user_id;
-
-       $item->save();
-
+       $this->itemService->update($request, $id);
     }
 
     public function destroy($id)
     {
-        $item = Item::find($id);
+        $this->itemService->destroy($id);
+        return response($this->itemService->status);
+    }
 
-        // $target = str_replace('/storage', 'public', $item->image);
-        // Storage::disk('local')->delete($target);
-        $item->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
+    public function deleteSecondImage($id)
+    {
+        $this->itemService->deleteSecondImage($id);
+        return response($this->itemService->status);
     }
 }
