@@ -1,66 +1,56 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+安裝
+=
+資料庫名稱預設為 simple
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+修改後請執行
+```
+bash build.sh
+```
+結束後再執行
+```
+php artisan simple:install
+```
+以上安裝完以後便會有基礎的資料方便測試
 
-## About Laravel
+說明
+=
+#### 這是一個二手書買賣的網站
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 資料庫
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Item為要買賣的書籍, 目前可存取內容包括書名、首張圖片、描述、書本簡介等
+2. Image為個書籍圖片, 透過關聯每本書籍可以擁有數張圖片, 用以輔助買家查看書本情況
+3. User為會員, 可透過UserGroup來設定相關權限, 日後此處可能改為管理員使用, 並將會員存至名為Member的表
 
-## Learning Laravel
+### 文件(Contorller、Models、Service、Resource)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Controller 會呼叫對應的Service如 ItemService 與 ImageService 輔助CRUD的操作
+2. Service 的BaseService 為Service文件最原始樣式, 可重複利用的功能會放在這裡, 目前只有上傳與刪除圖片檔案並回傳路徑的功能
+3. Models 資料表關聯為每個商品可以有數張圖片(Item vs Image), 每個群組可以有多個會員, 每個會員可以出售多項產品
+4. Resource 用來處理回傳的資料, 如ItemResource會回傳Item的資料以及相關會用到的資料
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+路由說明
+=
+1. 首頁　　　　　[GET]　 /api/item　　　　　 　　　
+2. 單一商品　　　[GET]　 /api/item/show/{id}　　　
+3. 刪除商品　　　[POST]　/api/item/delete/{id}　　 
+4. 更新目標商品　[POST]　/api/item/update/{id}　　 
+5. 儲存商品　　　[POST]　/api/item/store　　　　　　
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+路由存取欄位方式
+=
+路由說明1,2,3 直接傳送id即可<br>
 
-## Laravel Sponsors
+路由說明4<br>
+必填欄位name, description, introduction<br>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+路由說明5<br>
+必填欄位&說明<br>
+'name':　書名<br>
+'image':　封面圖片<br>
+'description':　描述書籍內容<br>
+'introduction':　書本簡介<br>
+'quantity':　目前數量<br>
+'price':　價格<br>
+'user_id':　商品擁有者<br>

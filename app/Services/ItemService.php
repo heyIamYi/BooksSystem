@@ -51,9 +51,10 @@ class ItemService extends BaseService
 
             $this->deleteFile($item->image);
 
-            $img_path = $this->uploadFile($item->image);
+            $img_path = $this->uploadFile($request->image);
 
             $item->image = $img_path;
+
         }
 
         if ($request->hasfile('second_img')) {
@@ -68,12 +69,23 @@ class ItemService extends BaseService
             }
         }
 
+
+        if ($request->quantity) {
+            $item->quantity = $request->quantity;
+        } else {
+            $item->quantity = $item->quantity;
+        }
+
+
+        if ($request->price) {
+            $item->price = $request->price;
+        } else {
+            $item->price = $item->price;
+        }
+
         $item->name = $request->name;
         $item->description = $request->description;
         $item->introduction = $request->introduction;
-        $item->quantity = $request->quantity;
-        $item->price = $request->price;
-        $item->user_id = $request->user_id;
 
         $item->save();
     }
