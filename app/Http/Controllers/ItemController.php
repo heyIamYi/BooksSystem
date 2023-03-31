@@ -30,12 +30,6 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {
-
-        $items = Item::where('user_id', $request->user()->id)->get();
-
-        return response()->json($items);
-
-       
         $this->itemService->store($request);
         return response($this->itemService->status, Response::HTTP_CREATED);
     }
