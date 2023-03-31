@@ -40,7 +40,7 @@ class SimpleCommand extends Command
     public function handle()
     {
         $this->call('migrate:fresh');
-
+        $this->call('passport:install');
         foreach ($this->seeders as $seeder) {
             $this->call('db:seed', [
                 '--class' => $seeder,
