@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->char('name', 20)->comment('書名');
-            $table->string('image')->comment('書本圖片');
+            $table->string('image')->comment('書本圖片')->nullable();
             $table->longtext('description')->comment('書本描述');
             $table->longtext('introduction')->comment('書本簡介');
             $table->integer('quantity')->comment('數量');

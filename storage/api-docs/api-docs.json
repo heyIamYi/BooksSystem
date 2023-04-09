@@ -1,0 +1,468 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Simple-Project API",
+        "description": "這是一份針對專案呈現而撰寫的swagger文件<br>",
+        "contact": {
+            "email": "verysimplesetting@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://coladog.space/",
+            "description": "主機"
+        }
+    ],
+    "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "驗證相關"
+                ],
+                "summary": "登入",
+                "description": "登入使用者, 並取得token, <br>得到的token要放入header的Authorization參數 ex Bearer空格<回傳token><br><br>測試信箱: test@fackmail.com<br>信箱密碼: 123456<br>",
+                "operationId": "Login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "信箱",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "密碼",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzk4MGQ2NzcyMjk1MTVmNTAyZTJiM2E0ZGYxODkxNDBmNmNiNjYwOWY1NGE5NWNiYjg3YzcxODBhNDc1ODZmYTU3MDU1ZWRmMjg4OGRlZTUiLCJpYXQiOjE2ODExMzA0MTYuMzI3NzksIm5iZiI6MTY4MTEzMDQxNi4zMjc3OTMsImV4cCI6MTY5Njk0MTYxNi4xNzAwMjMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.j3MKynxeXeLKIsLiSxxW0WFKUZbb_O_rgufbUXW80k670Cjocf-Nb4TGrjcZlFWwYBUaQH4E4_qot09KNBB3Sk5uUz3RdSP7PcfI7hJ245NoqWwZCasFULcUsjIC12HkJRHuWsThGwivhFiYiLJbG6Bt3uO40lDeOSaVdClu7bTcbea6xovAib42bq83epsI2185tT9eEkT929Q_EV8y3BMpjQiQP_QSbPiXteyl3Ss2LQA2mlvzz9D50pTazO6bq2JOrJZzwTGgwr23kkDo6MyXWuvKt-b6G62jD1e4vp9TRbtBZwMqLZIRQgPLB6cw9JGTtUr8sLSaMimW08CqHwZf9bPuENmBWb4Vuw59SCr9rRqVUvJjWnvrjFil2OCB9xDF76_bH5Tt3ISbkgQurD18TtNOd1tK5CwLQXnAzf2Clwa0SlthnHOD6fjrDjXMq3YqLrwWBTbhQ2xFCNkqW8jD2N6--m1R82XZyjQgmxNDTMxmQicdVIzC3vxTDK7NjWO6vWuYPQE2NblhjiC8Ktfu0ddA51VbNCZMyDro5AwgDycHKNqURrFLh7hsfCayPUMfESKYIkX97c-BJGEDsrCs-9602fk6Ym4UWMMApYWPWXKSALiklBX0h5GOYn4OmUbFlJBNvH_5le_DwVSPSZQpJxcXLBEPl0sIDnsyZa0"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/item": {
+            "get": {
+                "tags": [
+                    "ITEM"
+                ],
+                "summary": "取得所有列表",
+                "description": "取得所有Item",
+                "operationId": "itemIdex",
+                "responses": {
+                    "200": {
+                        "description": "請求成功",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "id": 1,
+                                        "name": "第一本書",
+                                        "description": "這本書內容寫著關於第一本書的東西",
+                                        "introduction": "無數人總是喜歡看書",
+                                        "quantity": 50,
+                                        "price": 350,
+                                        "user_id": 1,
+                                        "image": {
+                                            "main": "/storage/item/v0Vl3XDnXcvS62dOKayKc2WIRsSXT5Oyt7RH5tsx.jpg",
+                                            "other_image": [
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "id": 2,
+                                        "name": "第二本書",
+                                        "description": "這本書內容寫著關於第一本書的東西",
+                                        "introduction": "無數人總是喜歡看書",
+                                        "quantity": 50,
+                                        "price": 330,
+                                        "user_id": 2,
+                                        "image": {
+                                            "main": "/storage/item/v0Vl3XDnXcvS62dOKayKc2WIRsSXT5Oyt7RH5tsx.jpg",
+                                            "other_image": [
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/item/{id}": {
+            "get": {
+                "tags": [
+                    "ITEM"
+                ],
+                "summary": "取得單一資料",
+                "description": "取得單一資料",
+                "operationId": "itemShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "資料id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "id": 1,
+                                        "name": "第一本書",
+                                        "description": "這本書內容寫著關於第一本書的東西",
+                                        "introduction": "無數人總是喜歡看書",
+                                        "quantity": 50,
+                                        "price": 350,
+                                        "user_id": 1,
+                                        "image": {
+                                            "main": "/storage/item/v0Vl3XDnXcvS62dOKayKc2WIRsSXT5Oyt7RH5tsx.jpg",
+                                            "other_image": [
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/SqCRkw29Ea3K9eIaONwv1aTNXScZZoir6gwcB9o7.jpg"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/item/store": {
+            "post": {
+                "tags": [
+                    "ITEM"
+                ],
+                "summary": "上傳新項目",
+                "description": "如果需要上傳新項目, 請使用此API",
+                "operationId": "itemStore",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "書名",
+                        "required": true,
+                        "schema": {
+                            "type": "char"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "書本描述",
+                        "required": true,
+                        "schema": {
+                            "type": "longtext"
+                        }
+                    },
+                    {
+                        "name": "introduction",
+                        "in": "query",
+                        "description": "書本簡介",
+                        "required": true,
+                        "schema": {
+                            "type": "longtext"
+                        }
+                    },
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "數量",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "價格",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "上架者id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "書本圖片",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "second_img",
+                        "in": "query",
+                        "description": "其他圖片",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "message": "Success !",
+                                    "data": {
+                                        "id": 14,
+                                        "name": "測試",
+                                        "description": "這是一個測試的東西",
+                                        "introduction": "這是介紹",
+                                        "quantity": 132,
+                                        "price": 123,
+                                        "user_id": 1,
+                                        "image": {
+                                            "main": "storage/item/T5YHlfr5Ln3Xi7oh74NwNbtI4HvYTa5jeNHPS67t.gif",
+                                            "other_image": [
+                                                {
+                                                    "img_path": "storage/item/wudzfzG3UjYaEk8H7WHlxcXFNYu6bTxJ3QicYnsU.gif"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/wudzfzG3UjYaEk8H7WHlxcXFNYu6bTxJ3QicYnsU.gif"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/item/update/{id}": {
+            "post": {
+                "tags": [
+                    "ITEM"
+                ],
+                "summary": "更新指定項目",
+                "description": "如果需要更新項目, 請使用此API<br>更新成功後會返回",
+                "operationId": "itemUpdate",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "書名",
+                        "required": true,
+                        "schema": {
+                            "type": "char"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "書本描述",
+                        "required": true,
+                        "schema": {
+                            "type": "longtext"
+                        }
+                    },
+                    {
+                        "name": "introduction",
+                        "in": "query",
+                        "description": "書本簡介",
+                        "required": true,
+                        "schema": {
+                            "type": "longtext"
+                        }
+                    },
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "數量",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "價格",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "image",
+                        "in": "query",
+                        "description": "書本圖片",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "second_img",
+                        "in": "query",
+                        "description": "其他圖片",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "message": "Update Success !",
+                                    "data": {
+                                        "id": 1,
+                                        "name": "測試",
+                                        "description": "這是一個測試的東西",
+                                        "introduction": "這是介紹",
+                                        "quantity": 132,
+                                        "price": 123,
+                                        "user_id": 1,
+                                        "image": {
+                                            "main": "storage/item/T5YHlfr5Ln3Xi7oh74NwNbtI4HvYTa5jeNHPS67t.gif",
+                                            "other_image": [
+                                                {
+                                                    "img_path": "storage/item/wudzfzG3UjYaEk8H7WHlxcXFNYu6bTxJ3QicYnsU.gif"
+                                                },
+                                                {
+                                                    "img_path": "storage/item/wudzfzG3UjYaEk8H7WHlxcXFNYu6bTxJ3QicYnsU.gif"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/item/delete/{id}": {
+            "get": {
+                "tags": [
+                    "ITEM"
+                ],
+                "summary": "刪除單一資料",
+                "description": "刪除單一資料",
+                "operationId": "itemDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "資料id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    {
+                                        "message": "Delete Success !"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "apiKey",
+                "description": "請帶入會員登入後回傳的token (格式：Bearer <token>)，過期機制說明：Token驗證若短期過期，系統會自動refresh，回傳結果時在header放新token，可以判斷如果header有token的話就更新成新token （authorization參數），如果沒過期authorization不會出現（注意：  一樣有前綴Bearer後面需有空格）",
+                "name": "Authorization",
+                "scheme": "bearer",
+                "in": "header"
+            }
+        }
+    }
+}
