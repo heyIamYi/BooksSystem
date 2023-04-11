@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Validator;
  *  ),
  *  @OA\Server(
  *      description="主機",
- *      url="https://coladog.space/"
+ *      url="http://coladog.space/"
  *  ),
  * )
  */
