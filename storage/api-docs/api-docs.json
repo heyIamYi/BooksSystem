@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "https://coladog.space/",
+            "url": "http://coladog.space/",
             "description": "主機"
         }
     ],
