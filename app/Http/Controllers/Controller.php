@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
  *  @OA\Info(
  *      title="Simple-Project API",
  *      version="1.0.0",
- *      description="這是一份針對專案呈現而撰寫的swagger文件<br>",
+ *      description="這是一份針對專案呈現而撰寫的 Swagger 文件<br>1.透過驗證相關內的連結取得 Token 後<br>2.將 Token 放入 Authorize 裡面<br>3.使用 ITEM 相關API",
  *      @OA\Contact(
  *          email="verysimplesetting@gmail.com"
  *      )
