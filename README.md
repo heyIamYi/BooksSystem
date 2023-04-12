@@ -14,8 +14,10 @@ php artisan simple:install
 
 說明
 =
-#### 這是一個二手書買賣的網站
+#### 這是一個展示後端技能的專案
 
+### API相關文件
+參考連結：http://coladog.space/api/documentation
 
 ### 資料庫
 
@@ -41,28 +43,3 @@ App/Models<br>
 3. 文件路徑<br>
 Database/seeders<br>
 App/Console/Commands<br>
-
-路由說明
-=
-1. 首頁　　　　　[GET]　 /api/item　　　　　 　　　
-2. 單一商品　　　[GET]　 /api/item/show/{id}　　　
-3. 刪除商品　　　[POST]　/api/item/delete/{id}　　 
-4. 更新目標商品　[POST]　/api/item/update/{id}　　 
-5. 儲存商品　　　[POST]　/api/item/store　　　　　　
-
-路由存取欄位方式
-=
-路由說明1,2,3 直接傳送id即可<br>
-
-路由說明4<br>
-必填欄位name, description, introduction<br>
-
-路由說明5<br>
-必填欄位&說明<br>
-'name':　書名<br>
-'image':　封面圖片<br>
-'description':　描述書籍內容<br>
-'introduction':　書本簡介<br>
-'quantity':　目前數量<br>
-'price':　價格<br>
-'user_id':　商品擁有者<br>
