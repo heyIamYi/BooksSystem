@@ -24,6 +24,10 @@ use Illuminate\Support\Facades\Validator;
  *      description="主機",
  *      url="http://coladog.space/"
  *  ),
+ * @OA\Server(
+ *      description="主機",
+ *      url="http://127.0.0.1:8000"
+ *  ),
  * )
  */
 class Controller extends BaseController
@@ -46,7 +50,7 @@ class Controller extends BaseController
      *          name="email",
      *          description="信箱",
      *          required=true,
-     *          in="path",
+     *          in="query",
      *          @OA\Schema(
      *              type="string"
      *          )
@@ -55,7 +59,7 @@ class Controller extends BaseController
      *          name="password",
      *          description="密碼",
      *          required=true,
-     *          in="path",
+     *          in="query",
      *          @OA\Schema(
      *              type="string"
      *          )

@@ -12,6 +12,10 @@
         {
             "url": "http://coladog.space/",
             "description": "主機"
+        },
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "主機"
         }
     ],
     "paths": {
@@ -26,7 +30,7 @@
                 "parameters": [
                     {
                         "name": "email",
-                        "in": "path",
+                        "in": "query",
                         "description": "信箱",
                         "required": true,
                         "schema": {
@@ -35,7 +39,7 @@
                     },
                     {
                         "name": "password",
-                        "in": "path",
+                        "in": "query",
                         "description": "密碼",
                         "required": true,
                         "schema": {
@@ -196,7 +200,7 @@
                 "parameters": [
                     {
                         "name": "name",
-                        "in": "query",
+                        "in": "path",
                         "description": "書名",
                         "required": true,
                         "schema": {
@@ -429,7 +433,7 @@
                 "parameters": [
                     {
                         "name": "id",
-                        "in": "query",
+                        "in": "path",
                         "description": "資料id",
                         "required": true,
                         "schema": {

@@ -172,7 +172,7 @@ class ItemController extends Controller
      *          name="name",
      *          description="書名",
      *          required=true,
-     *          in="query",
+     *          in="path",
      *          @OA\Schema(
      *              type="char"
      *          )
@@ -408,7 +408,7 @@ class ItemController extends Controller
      *          name="id",
      *          description="資料id",
      *          required=true,
-     *          in="query",
+     *          in="path",
      *          @OA\Schema(
      *              type="integer"
      *          )
