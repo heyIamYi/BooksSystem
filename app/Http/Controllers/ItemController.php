@@ -26,6 +26,7 @@ class ItemController extends Controller
      *      operationId="itemIdex",
      *      tags={"ITEM"},
      *      summary="取得所有列表",
+     *      security={{"bearer_token":{}}},
      *      description="取得所有Item",
      *      @OA\Response(
      *          response=200,
@@ -104,12 +105,13 @@ class ItemController extends Controller
      *      operationId="itemShow",
      *      tags={"ITEM"},
      *      summary="取得單一資料",
+     *      security={{"bearer_token":{}}},
      *      description="取得單一資料",
      *      @OA\Parameter(
      *          name="id",
      *          description="資料id",
      *          required=true,
-     *          in="query",
+     *          in="path",
      *          @OA\Schema(
      *              type="integer"
      *          )
@@ -172,9 +174,9 @@ class ItemController extends Controller
      *          name="name",
      *          description="書名",
      *          required=true,
-     *          in="path",
+     *          in="query",
      *          @OA\Schema(
-     *              type="char"
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -183,7 +185,7 @@ class ItemController extends Controller
      *          required=true,
      *          in="query",
      *          @OA\Schema(
-     *              type="longtext"
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -192,7 +194,7 @@ class ItemController extends Controller
      *          required=true,
      *          in="query",
      *          @OA\Schema(
-     *              type="longtext"
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -291,12 +293,21 @@ class ItemController extends Controller
      *      description="如果需要更新項目, 請使用此API<br>更新成功後會返回",
      *      security={{"bearer_token":{}}},
      *      @OA\Parameter(
+     *          name="id",
+     *          description="id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
      *          name="name",
      *          description="書名",
      *          required=true,
      *          in="query",
      *          @OA\Schema(
-     *              type="char"
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -305,7 +316,7 @@ class ItemController extends Controller
      *          required=true,
      *          in="query",
      *          @OA\Schema(
-     *              type="longtext"
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -314,7 +325,7 @@ class ItemController extends Controller
      *          required=true,
      *          in="query",
      *          @OA\Schema(
-     *              type="longtext"
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -398,12 +409,13 @@ class ItemController extends Controller
     }
 
      /**
-     * @OA\GET(
+     * @OA\POST(
      *      path="/api/item/delete/{id}",
      *      operationId="itemDelete",
      *      tags={"ITEM"},
      *      summary="刪除單一資料",
      *      description="刪除單一資料",
+     *      security={{"bearer_token":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          description="資料id",

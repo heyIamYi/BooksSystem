@@ -128,7 +128,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/item/{id}": {
@@ -142,7 +147,7 @@
                 "parameters": [
                     {
                         "name": "id",
-                        "in": "query",
+                        "in": "path",
                         "description": "資料id",
                         "required": true,
                         "schema": {
@@ -186,7 +191,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         },
         "/api/item/store": {
@@ -200,11 +210,11 @@
                 "parameters": [
                     {
                         "name": "name",
-                        "in": "path",
+                        "in": "query",
                         "description": "書名",
                         "required": true,
                         "schema": {
-                            "type": "char"
+                            "type": "string"
                         }
                     },
                     {
@@ -213,7 +223,7 @@
                         "description": "書本描述",
                         "required": true,
                         "schema": {
-                            "type": "longtext"
+                            "type": "string"
                         }
                     },
                     {
@@ -222,7 +232,7 @@
                         "description": "書本簡介",
                         "required": true,
                         "schema": {
-                            "type": "longtext"
+                            "type": "string"
                         }
                     },
                     {
@@ -320,12 +330,21 @@
                 "operationId": "itemUpdate",
                 "parameters": [
                     {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "description": "書名",
                         "required": true,
                         "schema": {
-                            "type": "char"
+                            "type": "string"
                         }
                     },
                     {
@@ -334,7 +353,7 @@
                         "description": "書本描述",
                         "required": true,
                         "schema": {
-                            "type": "longtext"
+                            "type": "string"
                         }
                     },
                     {
@@ -343,7 +362,7 @@
                         "description": "書本簡介",
                         "required": true,
                         "schema": {
-                            "type": "longtext"
+                            "type": "string"
                         }
                     },
                     {
@@ -423,7 +442,7 @@
             }
         },
         "/api/item/delete/{id}": {
-            "get": {
+            "post": {
                 "tags": [
                     "ITEM"
                 ],
@@ -454,7 +473,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
             }
         }
     },
