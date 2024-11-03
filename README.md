@@ -17,7 +17,7 @@ php artisan simple:install
 #### 這是一個展示後端技能的專案
 
 ### API相關文件
-參考連結：http://coladog.space/api/documentation
+參考連結：
 
 ### 資料庫
 
